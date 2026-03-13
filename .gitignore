@@ -1,0 +1,8 @@
+venv/
+output/
+*.pyc
+__pycache__/
+samples/*.exe
+samples/*.dll
+samples/*.bin
+samples/*.malware

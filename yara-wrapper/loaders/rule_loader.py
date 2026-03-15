@@ -16,10 +16,13 @@ def load_rule(rule_path):
 def load_all_rules(directory_path):
     if not Path(directory_path).exists():
         raise FileNotFoundError(f"Directory not found: {directory_path}")
+    
     files_found = Path(directory_path).glob("*.yar")
     rule_files = []
+    
     for rule_file in files_found:
         rule_files.append(load_rule(rule_file))
     if not rule_files:
         raise FileNotFoundError(f"No .yar files found in: {directory_path}")
+    
     return rule_files

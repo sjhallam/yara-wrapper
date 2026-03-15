@@ -6,3 +6,4 @@ samples/*.exe
 samples/*.dll
 samples/*.bin
 samples/*.malware
+samples/*.txt

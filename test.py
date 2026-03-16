@@ -1,13 +1,15 @@
+import os
+import psutil
 from yara_wrapper.loaders.rule_loader import load_rule
-from yara_wrapper.scanners.file_scanner import scan_file
+from yara_wrapper.scanners.process_scanner import scan_process
 
 # Load the rule
 rule = load_rule("rules/test_rule.yar")
 
-# Scan both files
-malicious_result = scan_file(rule, "samples/malicious.txt")
-clean_result = scan_file(rule, "samples/clean.txt")
+# Get current Python process PID
+pid = os.getpid()
+print(f"Scanning process: {pid}")
 
-# Print results
-print("Malicious file:", malicious_result)
-print("Clean file:", clean_result)
+# Scan the process
+results = scan_process(rule, pid)
+print("Results:", results)
